@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 1학기 전공기초중국어 문화 기말 정리하기</title>
+<style>
+  :root{
+    --paper:#faf7f0; --card:#ffffff; --ink:#2c2a26; --sub:#6b665d;
+    --line:#eae4d8; --yellow:#ffd95e; --yellow-soft:#fff1c2;
+    --blue:#a9d6f0; --blue-soft:#e3f2fb; --pink:#f4cdce; --pink-soft:#fbe9ea;
+    --green:#3aa564; --red:#d9534f; --accent:#3b3a36;
+    --shadow:0 6px 22px rgba(60,55,45,.10);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.6;
+    background-image:radial-gradient(circle at 12% 10%, #fff6da 0, transparent 38%),radial-gradient(circle at 88% 90%, #e7f3fb 0, transparent 40%);
+    min-height:100vh;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:22px 16px 80px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:26px 22px}
+  h1,h2,h3{margin:0 0 6px;line-height:1.25}
+  .muted{color:var(--sub)}
+  .center{text-align:center}
+  .tab{display:inline-block;background:var(--yellow-soft);border:1px solid #f3e2a8;color:#7a5b00;
+    font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:10px}
+  button{font-family:inherit;cursor:pointer;border:none}
+  .btn{background:var(--yellow);color:#3a2f00;font-weight:800;font-size:17px;padding:14px 22px;border-radius:14px;
+    border:1px solid #f0c948;box-shadow:0 3px 0 #e9bd3a;transition:transform .05s, box-shadow .05s;width:100%}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 #e9bd3a}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 var(--line)}
+  .btn.ghost:active{box-shadow:0 1px 0 var(--line)}
+  .field{margin:14px 0}
+  .field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+  input[type=text],input[type=password]{width:100%;font-size:17px;padding:13px 14px;border:1.5px solid var(--line);
+    border-radius:12px;background:#fffdf8;outline:none;transition:border-color .15s}
+  input:focus{border-color:var(--yellow)}
+  .title-hero{font-size:30px;font-weight:900;letter-spacing:-.5px}
+  .title-hero .ck{color:#c79a00;font-weight:900;margin-left:4px;letter-spacing:2px}
+  .stamp{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:14px;
+    background:#c0392b;color:#fff;font-weight:900;font-size:30px;box-shadow:0 4px 12px rgba(192,57,43,.35);
+    border:3px solid #a93226;transform:rotate(-4deg);font-family:serif}
+  .lvl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+  @media(max-width:520px){.lvl-grid{grid-template-columns:repeat(2,1fr)}.title-hero{font-size:24px}}
+  .lvl-btn{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center;
+    font-weight:800;font-size:16px;color:var(--ink);box-shadow:0 3px 0 var(--line);transition:.08s}
+  .lvl-btn .sub{display:block;font-size:11px;font-weight:600;color:var(--sub);margin-top:3px}
+  .lvl-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+  .lvl-btn.sel{border-color:var(--yellow);background:var(--yellow-soft);box-shadow:0 3px 0 #f0c948}
+  .lvl-btn:disabled{opacity:.32;cursor:not-allowed}
+  .progress-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--sub);margin-bottom:10px}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+  .pill.u{background:var(--blue-soft);border-color:#cfe7f6;color:#2e6f99}
+  .timerbar{height:8px;background:#eee;border-radius:999px;overflow:hidden;margin:6px 0 18px}
+  .timerbar > i{display:block;height:100%;background:linear-gradient(90deg,#7ec98a,#ffd95e);transition:width 1s linear}
+  .timerbar.warn > i{background:linear-gradient(90deg,#ffb74d,#d9534f)}
+  .qno{font-size:13px;font-weight:800;color:#c79a00;letter-spacing:.5px}
+  .qtext{font-size:20px;font-weight:800;margin:6px 0 4px;line-height:1.4}
+  .passage{background:var(--pink-soft);border:1px solid #f1d6d7;border-radius:12px;padding:13px 14px;margin:12px 0;font-size:15px;white-space:pre-wrap}
+  .passage b{color:#b5403c}
+  .opts{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .opt{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:13px;
+    padding:13px 14px;font-size:16px;text-align:left;transition:.08s;width:100%;color:var(--ink)}
+  .opt:active{transform:scale(.99)}
+  .opt .k{flex:0 0 26px;height:26px;border-radius:8px;background:#f3efe6;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--sub)}
+  .opt.sel{border-color:var(--yellow);background:var(--yellow-soft)}
+  .opt.sel .k{background:var(--yellow);color:#3a2f00}
+  .short-in{margin-top:14px}
+  .feedback{margin-top:16px}
+  .res-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .score-big{font-size:40px;font-weight:900;line-height:1}
+  .donut{--p:0;width:96px;height:96px;border-radius:50%;flex:0 0 auto;
+    background:conic-gradient(var(--green) calc(var(--p)*1%), #efe9dd 0);display:flex;align-items:center;justify-content:center}
+  .donut > span{width:70px;height:70px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
+  .qreview{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+  .qreview.wrong{border-color:#f0c2c1;background:#fdf3f3}
+  .qreview.ok{border-color:#cfe9d6;background:#f4fbf6}
+  .tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .tag{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:#f1ece1;color:var(--sub)}
+  .tag.lv{background:var(--yellow-soft);color:#8a6800}
+  .tag.un{background:var(--blue-soft);color:#2e6f99}
+  .tag.ty{background:#efe7f7;color:#6b48a3}
+  .ans-line{font-size:14px;margin:3px 0}
+  .ans-line .x{color:var(--red);font-weight:800}
+  .ans-line .o{color:var(--green);font-weight:800}
+  .explain{background:#fff;border:1px dashed #e2dccf;border-radius:10px;padding:11px 12px;margin-top:9px;font-size:14.5px}
+  .bar{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:14px}
+  .bar .lab{flex:0 0 96px;font-weight:700}
+  .bar .track{flex:1;background:#efe9dd;border-radius:999px;height:16px;overflow:hidden}
+  .bar .track > i{display:block;height:100%;border-radius:999px;background:var(--blue)}
+  .bar .track > i.r{background:#e88a87}
+  .bar .val{flex:0 0 64px;text-align:right;font-weight:800;color:var(--sub);font-size:13px}
+  .weak{background:var(--pink-soft);border:1px solid #f1d6d7;border-radius:12px;padding:13px 15px;margin-top:12px}
+  .weak h4{margin:0 0 6px;color:#b5403c}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+  .chip{background:#fff;border:1px solid #f1d6d7;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:700;color:#a83b37}
+  .divider{height:1px;background:var(--line);margin:18px 0}
+  .stu-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 14px;border:1px solid var(--line);
+    border-radius:12px;margin-bottom:9px;background:#fff;cursor:pointer;transition:.08s}
+  .stu-row:active{transform:scale(.995)}
+  .stu-row .rank{flex:0 0 30px;height:30px;border-radius:9px;background:var(--yellow-soft);display:flex;align-items:center;justify-content:center;font-weight:900;color:#8a6800}
+  .stu-row .nm{flex:1;font-weight:800;font-size:16px}
+  .stu-row .sc{font-weight:900;font-size:17px}
+  .badge{display:inline-block;background:#c0392b;color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px}
+  .back{background:none;border:none;color:var(--sub);font-weight:700;font-size:14px;padding:6px 0;cursor:pointer}
+  .hint{font-size:13px;color:var(--sub);margin-top:8px}
+  .err{color:var(--red);font-size:13px;font-weight:700;margin-top:6px;min-height:18px}
+  .small{font-size:13px}
+  .kbd{font:inherit;background:#f3efe6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700}
+  .footnote{text-align:center;color:#b6b0a3;font-size:12px;margin-top:22px}
+  a.link{color:#2e6f99;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="footnote">전공기초중국어 · 문화 단원 기말 대비 · 혼자서도 단계별로 풀어보세요</div>
+
+<script>
+/* ============================ 데이터 ============================ */
+const LEVELS = ["기초","하","중","상","최상","심화"];
+const LEVEL_SUB = {"기초":"warm-up","하":"easy","중":"medium","상":"hard","최상":"expert","심화":"master"};
+const TYPE_LABEL = {mc:"객관식", short:"단답형", analysis:"보기분석"};
+
+/* answer: mc/analysis -> 정답 인덱스 / short -> 허용답 배열 */
+const QUESTIONS = [
+/* ---------------- 기초 ---------------- */
+{lv:"기초",ty:"mc",un:"단어",cc:"보충단어",q:"다음 중 '教师节(Jiàoshījié)'의 뜻으로 알맞은 것은?",o:["스승의 날","발렌타인 데이","어린이날","명절"],a:0,e:"教师节 = 스승의 날. 节日(jiérì)는 '기념일·명절'을 뜻해요."},
+{lv:"기초",ty:"mc",un:"단어",cc:"보충단어",q:"'발렌타인 데이'를 뜻하는 중국어는?",o:["情人节","教师节","节日","午觉"],a:0,e:"情人节(Qíngrénjié) = 발렌타인 데이."},
+{lv:"기초",ty:"short",un:"단어",cc:"보충단어",q:"'午觉(wǔjiào)'의 뜻을 한국어로 쓰세요.",a:["낮잠"],e:"午觉(wǔjiào) = 낮잠. 睡(shuì)는 '자다'."},
+{lv:"기초",ty:"mc",un:"단어",cc:"보충단어",q:"'作业(zuòyè)'의 뜻은?",o:["숙제","수업","시험","운동"],a:0,e:"作业(zuòyè) = 숙제."},
+{lv:"기초",ty:"mc",un:"단어",cc:"보충단어",q:"'完(wán)'의 뜻은?",o:["마치다","시작하다","받다","자다"],a:0,e:"完(wán) = 마치다. 开始(kāishǐ) 시작하다 ↔ 结束(jiéshù) 끝나다."},
+{lv:"기초",ty:"mc",un:"화폐",cc:"지폐 명소",q:"1元 지폐 뒷면에 그려진 명소는?",o:["西湖(서호)","泰山(태산)","桂林(계림)","布达拉宫(포탈라궁)"],a:0,e:"1元 = 항저우 西湖(서호) 三潭印月."},
+{lv:"기초",ty:"mc",un:"화폐",cc:"지폐 명소",q:"100元 지폐 뒷면의 명소는?",o:["人民大会堂(인민대회당)","故宫(자금성)","长城(만리장성)","天安门(천안문)"],a:0,e:"100元 = 베이징 人民大会堂(인민대회당)."},
+{lv:"기초",ty:"mc",un:"언어",cc:"중국어 위상",q:"모국어(사용 인구) 기준으로 세계에서 가장 많이 쓰이는 언어는?",o:["중국어","영어","스페인어","힌디어"],a:0,e:"중국어가 28.9%로 가장 높아요(영어 17%)."},
+{lv:"기초",ty:"mc",un:"언어",cc:"한자 구조",q:"한자 日, 月처럼 사물의 외형을 본떠 만든 한자 구조는?",o:["상형","지사","회의","형성"],a:0,e:"상형(象形): 사물의 외형을 모방하여 만든 글자(日·月)."},
+{lv:"기초",ty:"mc",un:"교통",cc:"고속열차 등급",q:"알파벳 'G'로 시작하는, 가장 빠른 고속철도는?",o:["高铁(gāotiě)","动车(dòngchē)","城际(chéngjì)","直达(zhídá)"],a:0,e:"G = 高铁(가장 빠른 고속철도)."},
+{lv:"기초",ty:"mc",un:"음식",cc:"4대 요리",q:"'麻婆豆腐(마파두부)'가 속한 중국 4대 요리는?",o:["사천요리(川菜)","산동요리(鲁菜)","광동요리(粤菜)","강소요리(苏菜)"],a:0,e:"마파두부는 川菜(사천요리)의 대표 음식."},
+{lv:"기초",ty:"short",un:"단어",cc:"반의어",q:"'高(gāo, 높다)'의 반대말을 한자(또는 한국어)로 쓰세요.",a:["低","dī","낮다"],e:"高(높다) ↔ 低(dī, 낮다)."},
+{lv:"기초",ty:"mc",un:"교통",cc:"교통 발달",q:"1980년대 이전 중국을 대표하던 교통수단은?",o:["자전거","오토바이","자동차","고속철도"],a:0,e:"이전:자전거 → 80년대 후:오토바이 → 90년대 후:자동차."},
+{lv:"기초",ty:"short",un:"화폐",cc:"화폐 단위",q:"중국 화폐의 기본 단위를 쓰세요. (한자 또는 한국어)",a:["元","위안","yuán","yuan"],e:"중국 화폐 단위 = 元(위안)."},
+{lv:"기초",ty:"mc",un:"언어",cc:"갑골문",q:"중국에서 발견된 가장 오래된 체계적인 문자는?",o:["甲骨文(갑골문)","楷书(해서)","行书(행서)","简体字(간체자)"],a:0,e:"갑골문(甲骨文): 거북 껍질·뼈에 새긴, 가장 오래된 체계적 문자."},
+
+/* ---------------- 하 ---------------- */
+{lv:"하",ty:"mc",un:"단어",cc:"병음",q:"'运动(운동하다)'의 올바른 병음은?",o:["yùndòng","yùndǒng","yóndòng","yùntòng"],a:0,e:"运动 = yùndòng."},
+{lv:"하",ty:"short",un:"단어",cc:"반의어",q:"'开始(시작하다)'의 반대말 '끝나다'를 중국어로 쓰세요.",a:["结束","jiéshù","jieshu"],e:"开始(시작하다) ↔ 结束(jiéshù, 끝나다)."},
+{lv:"하",ty:"mc",un:"화폐",cc:"명소 위치",q:"5元 뒷면의 泰山(태산)이 위치한 성(省)은?",o:["산동성","쓰촨성","광둥성","후베이성"],a:0,e:"泰山은 山东(산동성) 타이안시에 위치."},
+{lv:"하",ty:"mc",un:"화폐",cc:"명소 위치",q:"20元 뒷면의 桂林(계림)이 속한 행정구역은?",o:["광시좡족자치구","티베트자치구","네이멍구","신장위구르"],a:0,e:"桂林은 广西壮族自治区(광시좡족자치구) 동북부의 도시."},
+{lv:"하",ty:"mc",un:"언어",cc:"성조",q:"고대 평성(平)에서 갈라진 현대 성조 중 '제1성'의 명칭은?",o:["음평","양평","상성","거성"],a:0,e:"평(平) → 음평(1성)·양평(2성)으로 분화."},
+{lv:"하",ty:"mc",un:"언어",cc:"한자 구조",q:"上, 下처럼 지시부호·상징기호로 의미를 나타내는 한자 구조는?",o:["지사","상형","회의","형성"],a:0,e:"지사(指事): 상징 기호나 상형자에 지시부호를 더한 글자(上·下)."},
+{lv:"하",ty:"mc",un:"음식",cc:"요리 이름",q:"'蛋炒饭(dànchǎofàn)'에 들어 있는 조리법(炒)은?",o:["볶기","삶기","튀기기","데우기"],a:0,e:"炒(chǎo) = 볶기. 鸡蛋(계란)+饭(밥)을 볶은 요리."},
+{lv:"하",ty:"mc",un:"음식",cc:"요리 이름",q:"'炖鸡汤'의 '炖(dùn)'이 뜻하는 조리법은?",o:["푹 삶기","볶기","튀기기","굽기"],a:0,e:"炖(dùn) = 푹 삶기. 鸡(닭)+汤(탕)."},
+{lv:"하",ty:"mc",un:"교통",cc:"좌석 종류",q:"좌석 '硬座(yìngzuò)'의 뜻은?",o:["딱딱한 좌석(일반석)","부드러운 좌석","딱딱한 침대","부드러운 침대"],a:0,e:"硬座=딱딱한 좌석, 软座=부드러운 좌석, 硬卧=딱딱한 침대, 软卧=부드러운 침대."},
+{lv:"하",ty:"mc",un:"교통",cc:"교통 발달",q:"'서고동저' 지형의 영향으로 교통이 더 발달한 지역은?",o:["동부","서부","남부","북부"],a:0,e:"철도·고속도로·해운 모두 동부 중심으로 발달, 서부는 상대적으로 더딤."},
+{lv:"하",ty:"short",un:"단어",cc:"보충단어",q:"'个子(gèzi)'의 뜻을 쓰세요.",a:["키"],e:"个子(gèzi) = 키."},
+{lv:"하",ty:"mc",un:"화폐",cc:"명소 위치",q:"50元 뒷면 布达拉宫(포탈라궁)이 위치한 지역은?",o:["티베트(라싸)","베이징","상하이","산동"],a:0,e:"布达拉宫은 拉萨(라싸, 티베트 자치구)에 위치."},
+{lv:"하",ty:"mc",un:"언어",cc:"유엔 공식어",q:"유엔의 6개 공식 언어에 '포함되지 않는' 것은?",o:["일본어","아랍어","프랑스어","러시아어"],a:0,e:"유엔 공식어: 아랍어·중국어·영어·프랑스어·러시아어·스페인어."},
+{lv:"하",ty:"mc",un:"음식",cc:"지역 문구",q:"'南米北面'이 뜻하는 것은?",o:["남쪽은 쌀, 북쪽은 면","남쪽은 단맛, 북쪽은 짠맛","남쪽은 면, 북쪽은 쌀","동쪽은 매운맛, 서쪽은 신맛"],a:0,e:"南米北面 = 남쪽은 쌀(벼농사), 북쪽은 면(밀농사)."},
+{lv:"하",ty:"mc",un:"교통",cc:"고속열차 등급",q:"'D'로 시작하는 기차 종류는?",o:["动车(dòngchē)","高铁","城际","特快"],a:0,e:"D = 动车(고속철도 계열, 高铁보다 약간 느림)."},
+
+/* ---------------- 중 ---------------- */
+{lv:"중",ty:"mc",un:"음식",cc:"4대 요리",q:"'담백하고 섬세하며 단맛을 선호하고 민물고기 요리가 발달'한 4대 요리는?",o:["강소요리(苏菜)","산동요리(鲁菜)","광동요리(粤菜)","사천요리(川菜)"],a:0,e:"苏菜(강소요리): 담백·섬세·단맛, 칼질/조리법 정교, 민물고기. 대표 松鼠桂鱼."},
+{lv:"중",ty:"mc",un:"음식",cc:"4대 요리",q:"대표 음식이 '九转大肠(지우전다창)'인 요리는?",o:["산동요리","강소요리","광동요리","사천요리"],a:0,e:"鲁菜(산동요리)의 대표 음식이 九转大肠."},
+{lv:"중",ty:"mc",un:"화폐",cc:"장강 삼협",q:"10元 뒷면 长江三峡의 '三峡(삼협)'에 해당하지 '않는' 것은?",o:["夔门(쿠이먼)","瞿塘峡","巫峡","西陵峡"],a:0,e:"三峡=瞿塘峡·巫峡·西陵峡. 夔门은 협곡이 아니라 瞿塘峡 '입구'."},
+{lv:"중",ty:"mc",un:"화폐",cc:"명소 의미",q:"'桂林山水甲天下'의 의미는?",o:["계림의 산수가 천하제일이다","태산이 오악 중 최고다","장강이 가장 길다","서호가 가장 아름답다"],a:0,e:"桂林山水甲天下 = 계림의 산수가 천하에서 으뜸이다."},
+{lv:"중",ty:"mc",un:"언어",cc:"한자 구조",q:"회의자(会意)의 예로 알맞은 것은?",o:["明 = 日 + 月","日","上","材"],a:0,e:"회의(会意): 두 글자 이상을 의미로 합침. 明=日+月, 林=木+木."},
+{lv:"중",ty:"mc",un:"언어",cc:"한자 구조",q:"형성자 '想(xiǎng)'의 구성으로 옳은 것은?",o:["心(뜻) + 相(음)","相(뜻) + 心(음)","心 + 木","木 + 才"],a:0,e:"想 = 心(뜻) + 相(음). 형성(形声)은 형부(뜻)+성부(음)."},
+{lv:"중",ty:"mc",un:"언어",cc:"방언",q:"중국 표준어(普通话)의 바탕이 된 방언은?",o:["북방(관화)방언","오방언","월방언","민방언"],a:0,e:"7대 방언 중 1번 북방방언 = 관화방언이 표준어의 바탕."},
+{lv:"중",ty:"mc",un:"교통",cc:"일반열차 등급",q:"일반열차 등급 중 알파벳 'T'에 해당하는 기차는?",o:["特快(tèkuài)","快速(kuàisù)","直达(zhídá)","普通(pǔtōng)"],a:0,e:"T=特快(주요 역만 정차, 일반철도 중 빠른 편)."},
+{lv:"중",ty:"mc",un:"교통",cc:"좌석 종류",q:"'软卧(ruǎnwò)'의 뜻은?",o:["부드러운 침대","부드러운 좌석","딱딱한 침대","딱딱한 좌석"],a:0,e:"软卧 = 부드러운 침대(软=부드럽다, 卧=눕다/침대)."},
+{lv:"중",ty:"mc",un:"음식",cc:"요리 이름",q:"'京酱肉丝'에서 '丝(sī)'가 나타내는 것은?",o:["채 썬 모양","조리법(볶기)","짜장소스","돼지고기"],a:0,e:"丝(sī)=채 썬 모양. 酱(짜장소스)+肉(돼지고기)+丝(모양)."},
+{lv:"중",ty:"mc",un:"음식",cc:"요리 이름",q:"'麻辣烫'의 맛을 나타내는 '麻(má)'의 의미는?",o:["얼얼한 맛","매운 맛","신 맛","단 맛"],a:0,e:"麻=얼얼한 맛, 辣=매운 맛, 烫=데우다."},
+{lv:"중",ty:"mc",un:"화폐",cc:"명소 역사",q:"50元 布达拉宫을 7세기에 지은 티베트 왕은?",o:["송첸캄포","진시황","한무제","달라이 라마"],a:0,e:"송첸캄포 왕이 당나라 문성공주를 맞이하려 지음. 달라이 라마는 후대 거주자."},
+{lv:"중",ty:"mc",un:"언어",cc:"갑골문",q:"갑골문(甲骨文)이 처음 등장한 시기는?",o:["기원전 약 1300년경","기원전 약 200년경","기원후 100년경","기원전 약 3000년경"],a:0,e:"갑골문은 기원전 약 1300년경 처음 등장(점복 목적)."},
+{lv:"중",ty:"short",un:"단어",cc:"보충단어",q:"'接(jiē)'의 뜻을 한국어로 쓰세요.",a:["받다"],e:"接(jiē) = 받다."},
+{lv:"중",ty:"analysis",un:"음식",cc:"4대 요리",p:"<보기>\n재료 본연의 맛을 살리는 담백한 요리, 신선한 재료 사용, 딤섬과 탕 요리가 유명하다.",q:"<보기>의 설명에 해당하는 4대 요리는?",o:["광동요리(粤菜)","산동요리","강소요리","사천요리"],a:0,e:"粤菜(광동요리): 재료 본연의 맛·신선한 재료·딤섬·탕. 대표 虾饺."},
+
+/* ---------------- 상 ---------------- */
+{lv:"상",ty:"analysis",un:"음식",cc:"4대 요리",p:"<보기>\n중국 북방 요리의 대표, 짭짤하고 담백한 맛, 해산물 요리 발달, 국물·고급요리가 많다.",q:"<보기>가 설명하는 요리는?",o:["산동요리(鲁菜)","강소요리","광동요리","사천요리"],a:0,e:"鲁菜(산동요리): 북방 대표·짭짤·담백·해산물·국물/고급요리."},
+{lv:"상",ty:"mc",un:"화폐",cc:"장강 삼협",q:"10元 三峡 중 夔门(쿠이먼)이 입구에 위치한 협곡은?",o:["瞿塘峡(취탕샤)","巫峡(우샤)","西陵峡(시링샤)","长江"],a:0,e:"夔门은 瞿塘峡의 입구에 위치, 삼협 중 가장 웅장·험준."},
+{lv:"상",ty:"mc",un:"화폐",cc:"명소 역사",q:"10元 三峡 '백제성'과 관련된 삼국지 인물(복수 실패 후 숨진 인물)은?",o:["유비","관우","조조","제갈량"],a:0,e:"유비가 관우의 복수에 나섰다 대패한 후 백제성에서 숨졌다는 이야기."},
+{lv:"상",ty:"mc",un:"언어",cc:"성조",q:"고대 사성(평·상·거·입) 중 현대 표준중국어에서 1성·2성(음평·양평)으로 갈라진 것은?",o:["평성(平)","상성(上)","거성(去)","입성(入)"],a:0,e:"평(平)이 음평(1성)·양평(2성)으로 분화. 상→3성, 거→4성."},
+{lv:"상",ty:"mc",un:"언어",cc:"한자 구조",q:"형성자 '材(cái)'에서 '음(성부)'을 나타내는 부분은?",o:["才","木","心","相"],a:0,e:"材 = 木(뜻) + 才(음). 才가 성부(음)."},
+{lv:"상",ty:"analysis",un:"교통",cc:"고속열차 등급",p:"<보기>\n기차 등급 G, D, C",q:"<보기>의 세 등급이 공통적으로 속하는 분류는?",o:["고속(동력분산식) 열차 계열","일반(재래)열차","침대칸","지하철"],a:0,e:"G(高铁)·D(动车)·C(城际)은 모두 고속열차 계열. Z/T/K/숫자는 일반열차."},
+{lv:"상",ty:"mc",un:"음식",cc:"지역 문구",q:"'南甜北咸东辣西酸'에서 동쪽(东)의 맛은?",o:["매운맛","신맛","단맛","짠맛"],a:0,e:"남=단맛, 북=짠맛, 동=매운맛, 서=신맛."},
+{lv:"상",ty:"mc",un:"화폐",cc:"명소 의미",q:"\"세 개의 못이 달을 인쇄하듯 비춘다\"는 三潭印月이 있는 호수는?",o:["西湖(서호)","泰山","长江","桂林"],a:0,e:"항저우 西湖의 三潭印月. 서호는 중국 전통 미학·소프트파워의 상징."},
+{lv:"상",ty:"mc",un:"화폐",cc:"명소 의미",q:"50元 布达拉宫이 상징하는 것(55개 소수민족 포용)으로 알맞은 것은?",o:["다민족 국가","천하 통일","자연 경관","전통 미학"],a:0,e:"布达拉宫은 55개 소수민족을 포용하는 '다민족 국가'임을 천명."},
+{lv:"상",ty:"mc",un:"언어",cc:"중국어 위상",q:"중국어가 '동일 계통 문자로 기록된 문헌이 지속적으로 남아있는 유일한 언어'로 평가받는 기준 시점은?",o:["기원전 약 1300년","기원후 1년","기원전 200년","기원후 1300년"],a:0,e:"기원전 약 1300년경(갑골문)부터 오늘날까지 문헌 연속성 유지."},
+{lv:"상",ty:"mc",un:"음식",cc:"자연환경",q:"중국 북방(北方)이 밀농사에 적합한 자연환경의 이유로 옳은 것은?",o:["춥고 건조하며 강수량이 적음","덥고 습하며 강수량이 많음","기온이 높고 벼농사에 적합","강수량이 풍부함"],a:0,e:"북방: 춥고 건조·강수량 적음→밀농사. 남방: 기온 높고 강수량 풍부→벼농사."},
+{lv:"상",ty:"analysis",un:"음식",cc:"4대 요리",p:"<보기>\n麻(마)와 辣(라) 맛, 향신료 사용, 다양한 조리법, 중국에서 가장 인기 있는 요리.",q:"<보기>가 설명하는 요리는?",o:["사천요리(川菜)","산동요리","강소요리","광동요리"],a:0,e:"川菜(사천요리): 마라(麻辣)·향신료·다양한 조리법·최고 인기. 대표 麻婆豆腐."},
+{lv:"상",ty:"mc",un:"교통",cc:"교통 발달",q:"중국이 1990년대 이후 자동차 생산국으로 성장한 직접적 배경은?",o:["외국 기업과의 합작","자전거 보급","지하철 건설","해운 발달"],a:0,e:"외국 기업과의 합작을 통해 자동차 생산국으로 성장."},
+{lv:"상",ty:"mc",un:"화폐",cc:"명소 의미",q:"100元 人民大会堂에서 매년 3월 열리는 중국 최대 정치 행사는?",o:["양회(两会)","올림픽","춘절","국경절"],a:0,e:"매년 3월 양회(两会)가 열려 전 세계 이목이 집중. 국가 주권·정치 권위 상징."},
+{lv:"상",ty:"mc",un:"언어",cc:"한자 구조",q:"'둘 또는 둘 이상의 글자를 의미관계에 따라 합쳐 하나의 글자를 만드는' 한자 구조는?",o:["회의(会意)","상형","지사","형성"],a:0,e:"회의(会意): 의미관계로 글자를 합침(明·林)."},
+
+/* ---------------- 최상 ---------------- */
+{lv:"최상",ty:"analysis",un:"화폐",cc:"명소 종합",p:"<보기>\nㄱ. 50元 - 布达拉宫\nㄴ. 1元 - 泰山\nㄷ. 5元 - 西湖\nㄹ. 100元 - 桂林",q:"화폐와 뒷면 명소의 연결이 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"옳음: 50元-布达拉宫. (1元-西湖, 5元-泰山, 20元-桂林, 100元-人民大会堂)"},
+{lv:"최상",ty:"analysis",un:"음식",cc:"4대 요리",p:"<보기>\nA: 담백·섬세·단맛·민물고기\nB: 짭짤·해산물·북방 대표",q:"<보기> 중 '강소요리(苏菜)'에 해당하는 것은?",o:["A","B","A와 B 모두","해당 없음"],a:0,e:"A=苏菜(강소요리), B=鲁菜(산동요리)."},
+{lv:"최상",ty:"mc",un:"언어",cc:"방언",q:"다음 중 중국의 7대 방언에 해당하지 '않는' 것은?",o:["만주어방언","오(吴)방언","민(闽)방언","객가(客家)방언"],a:0,e:"7대 방언: 북방(관화)·오·상·감·객가·민·월. 만주어는 포함되지 않음."},
+{lv:"최상",ty:"analysis",un:"화폐",cc:"명소 종합",p:"<보기>\n오악(五岳) 중 최고(五岳独尊), 역대 황제들이 봉선의식을 치름, 천하 통일과 국가 번영을 상징한다.",q:"<보기>의 명소가 그려진 지폐는?",o:["5元","1元","10元","50元"],a:0,e:"泰山(태산) = 5元. 오악독존·봉선의식·천하통일/번영 상징."},
+{lv:"최상",ty:"analysis",un:"음식",cc:"요리 이름",p:"<보기>\n蛋炒饭(炒) · 炸酱面(炸) · 炖鸡汤(炖) · 麻辣烫(烫)",q:"<보기> 요리 이름 속 한자가 공통적으로 나타내는 정보는?",o:["조리법","재료","맛","모양"],a:0,e:"炒(볶기)·炸(튀기기)·炖(삶기)·烫(데우기)은 모두 '조리법'."},
+{lv:"최상",ty:"analysis",un:"교통",cc:"좌석 종류",p:"<보기>\nㄱ. 软卧 = 부드러운 침대\nㄴ. 硬座 = 부드러운 좌석\nㄷ. 软座 = 딱딱한 침대\nㄹ. 硬卧 = 부드러운 좌석",q:"좌석 표기 매칭으로 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"软=부드러움, 硬=딱딱함 / 座=좌석, 卧=침대. 软卧=부드러운 침대만 옳음."},
+{lv:"최상",ty:"analysis",un:"언어",cc:"성조",p:"<보기>\nㄱ. 거(去) → 4성\nㄴ. 평(平) → 3성\nㄷ. 상(上) → 1성\nㄹ. 입(入) → 2성",q:"고대-현대 성조 대응으로 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"평→1·2성, 상→3성, 거→4성. 거(去)→4성만 옳음."},
+{lv:"최상",ty:"analysis",un:"화폐",cc:"명소 의미",p:"<보기>\nㄱ. 长江三峡 - 신중국의 도약과 기상\nㄴ. 西湖 - 다민족 국가\nㄷ. 泰山 - 카르스트 대자연\nㄹ. 布达拉宫 - 정치 권위",q:"명소와 상징 의미의 연결이 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"长江=신중국 도약. (西湖=소프트파워, 泰山=천하통일, 桂林=카르스트, 布达拉宫=다민족, 人民大会堂=정치권위)"},
+{lv:"최상",ty:"analysis",un:"음식",cc:"4대 요리",p:"<보기>\nㄱ. 粤菜 - 虾饺\nㄴ. 鲁菜 - 麻婆豆腐\nㄷ. 川菜 - 松鼠桂鱼\nㄹ. 苏菜 - 九转大肠",q:"4대 요리와 대표 음식의 연결이 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"粤菜-虾饺(O). 鲁菜-九转大肠, 川菜-麻婆豆腐, 苏菜-松鼠桂鱼."},
+{lv:"최상",ty:"analysis",un:"언어",cc:"한자 구조",p:"<보기>\nㄱ. 형성 - 想\nㄴ. 상형 - 上\nㄷ. 지사 - 林\nㄹ. 회의 - 日",q:"한자 구조와 예시의 연결이 '옳은' 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"형성-想(O). 상형-日/月, 지사-上/下, 회의-明/林."},
+{lv:"최상",ty:"analysis",un:"교통",cc:"고속열차 등급",p:"<보기>\nㄱ. 高铁·动车·城际\nㄴ. 直达·特快·快速\nㄷ. 高铁·特快·普通\nㄹ. 动车·快速·城际",q:"모두 '고속열차'로만 묶인 것은?",o:["ㄱ","ㄴ","ㄷ","ㄹ"],a:0,e:"고속열차: 高铁(G)·动车(D)·城际(C). 直达/特快/快速/普通은 일반열차."},
+{lv:"최상",ty:"mc",un:"화폐",cc:"장강 삼협",q:"10元(长江三峡)에 대한 설명으로 옳은 것은?",o:["三峡은 瞿塘峡·巫峡·西陵峡이며, 夔门은 瞿塘峡 입구에 있다","三峡은 夔门·巫峡·西陵峡이다","长江은 중국에서 두 번째로 긴 강이다","백제성은 50元 도안에 있다"],a:0,e:"三峡=瞿塘峡·巫峡·西陵峡, 夔门=瞿塘峡 입구. 长江은 중국에서 가장 긴 강."},
+{lv:"최상",ty:"mc",un:"음식",cc:"지역 문구",q:"지역별 요리 문구의 의미가 '잘못' 연결된 것은?",o:["酸甜苦辣 = 남쪽 쌀, 북쪽 면","南米北面 = 남쪽 쌀, 북쪽 면","南甜北咸 = 남쪽 단맛, 북쪽 짠맛","东辣西酸 = 동쪽 매운맛, 서쪽 신맛"],a:0,e:"酸甜苦辣 = 신·단·쓴·매운맛 → 각양각색의 맛(세상의 온갖 고초)."},
+{lv:"최상",ty:"mc",un:"언어",cc:"중국어 위상",q:"중국어의 언어적 위상에 대한 설명으로 '틀린' 것은?",o:["세계의 언어는 약 600개뿐이다","모국어 기준 사용 인구가 가장 많다","유엔 공식 언어 중 하나다","화교들의 주요 언어다"],a:0,e:"유네스코 추정 지구상에 약 6,000여 개 언어가 존재."},
+{lv:"최상",ty:"mc",un:"교통",cc:"교통 발달",q:"중국 교통 발달에 대한 설명으로 옳은 것은?",o:["교통은 동부 지역을 중심으로 발달했고 서부는 상대적으로 더디다","서부가 교통 중심지다","1980년대 이전 자동차가 대표 수단이었다","해운은 서부에서만 발달했다"],a:0,e:"철도·고속도로·해운 모두 동부 중심 발달, 서부는 상대적으로 더딤."},
+
+/* ---------------- 심화 ---------------- */
+{lv:"심화",ty:"analysis",un:"화폐",cc:"명소 종합",p:"<보기>\n西湖 · 泰山 · 长江三峡 · 桂林 · 布达拉宫 · 人民大会堂",q:"인민폐 6종 뒷면 명소들을 통해 중국이 전달하려는 국가 서사로 가장 적절한 것은?",o:["전통 미학·자연·역사·민족통합·정치권위를 아우르는 국가 정체성","오로지 군사력의 우위","경제 성장률 수치 강조","스포츠 강국 이미지"],a:0,e:"西湖(미학)·泰山(통일/번영)·长江(도약)·桂林(대자연)·布达拉宫(다민족)·人民大会堂(정치권위)을 종합한 국가 서사."},
+{lv:"심화",ty:"mc",un:"언어",cc:"한자 구조",q:"뜻을 나타내는 부분과 음을 나타내는 부분이 결합한 한자(가장 많은 구조)의 이름과 예시로 옳은 것은?",o:["형성(形声) - 材(木+才)","회의(会意) - 材","상형 - 日","지사 - 林"],a:0,e:"형성(形声): 형부(뜻)+성부(음). 材=木(뜻)+才(음)."},
+{lv:"심화",ty:"mc",un:"화폐",cc:"명소 종합",q:"10元의 '백제성' 이야기와 장강의 상징을 함께 고려할 때, 이 도안이 전하는 메시지로 가장 적절한 것은?",o:["역사(삼국지)와 자연(장강)을 결합해 신중국의 도약·기상을 보여줌","단순한 관광지 홍보","티베트 불교 상징","계림 카르스트 강조"],a:0,e:"역사적 서사(삼협·백제성)와 자연(가장 긴 강)을 결합해 신중국의 도약과 기상을 표현."},
+{lv:"심화",ty:"mc",un:"화폐",cc:"명소 역사",q:"50元 布达拉宫의 건립 배경(송첸캄포–문성공주 정략결혼)이 보여주는 역사적 의의로 가장 적절한 것은?",o:["당나라와 티베트의 교류·융합의 역사","명·청 교체기의 혼란","한족 단일 민족 국가 형성","일대일로의 시작"],a:0,e:"송첸캄포가 당 문성공주를 맞이하며 지은 궁전 → 당·티베트 교류·융합의 역사."},
+{lv:"심화",ty:"mc",un:"언어",cc:"갑골문",q:"갑골문이 '점복 목적'이었다는 점과 중국어가 '문자 기록이 지속된 유일한 언어'라는 점을 연결한 설명으로 옳은 것은?",o:["기원전 1300년경 갑골문 이래 한자가 끊기지 않고 이어져 문헌 연속성이 유지됨","갑골문은 알파벳의 기원이다","점복 문자라서 곧 폐기되었다","갑골문은 바로 간체자로 바뀌었다"],a:0,e:"갑골문 이래 동일 계통 문자(한자)가 끊기지 않아 문헌 연속성이 유지됨."},
+{lv:"심화",ty:"mc",un:"음식",cc:"자연환경",q:"남방·북방의 자연환경 차이가 '南米北面'·'南甜北咸'에 반영된 원리로 가장 적절한 것은?",o:["기온·강수량 등 자연환경이 농작물(쌀/밀)과 식문화(맛)에 영향을 줌","정치 제도의 차이 때문","언어 방언의 차이 때문","종교의 차이 때문"],a:0,e:"기후·강수량 차이 → 작물(쌀/밀)과 식문화(맛)의 지역 차이로 이어짐."},
+{lv:"심화",ty:"mc",un:"언어",cc:"성조",q:"중국어가 '성조 언어'라는 점과 형성자가 음(성부)·뜻(형부)을 나눠 표기한다는 점에 대한 설명으로 옳은 것은?",o:["성조로 음을 구별하고, 형성자는 글자 안에 음과 뜻 정보를 함께 담는다","성조와 형성자는 서로 무관하다","형성자는 성조를 표기한다","현대 성조는 7개다"],a:0,e:"성조는 음 구별, 형성자는 한 글자에 음(성부)·뜻(형부)을 함께 담음."},
+{lv:"심화",ty:"mc",un:"언어",cc:"방언",q:"7대 방언이 존재함에도 중국이 언어적 통일성을 유지할 수 있는 핵심 요인으로 가장 적절한 것은?",o:["공통 문자인 한자와 표준어(보통화)","각 방언의 알파벳 표기","지역별 독립 문자","외국어 차용"],a:0,e:"방언은 달라도 공통 문자(한자)와 표준어(普通话)가 통일성을 유지시켜 줌."},
+{lv:"심화",ty:"mc",un:"화폐",cc:"명소 의미",q:"100元 人民大会堂이 '국가 주권·현대 정치의 권위'를 상징한다는 근거로 가장 적절한 것은?",o:["매년 3월 최대 정치 행사 양회가 열리는, 국회의사당 같은 곳","세계에서 가장 높은 궁전","오악 중 최고","카르스트 지형의 명소"],a:0,e:"양회 개최지이자 정치의 중심지 → 국가 주권·정치 권위의 상징."},
+{lv:"심화",ty:"mc",un:"화폐",cc:"명소 의미",q:"20元 桂林의 독특한 경관(카르스트 지형)이 형성된 원리로 옳은 것은?",o:["수억 년 동안 석회암이 비바람에 깎여 형성","화산 폭발로 형성","빙하가 깎아 형성","인공으로 조성"],a:0,e:"카르스트 지형: 석회암이 수억 년간 비바람에 침식되어 형성."},
+{lv:"심화",ty:"mc",un:"교통",cc:"고속열차 등급",q:"기차표에 'G6253', 'D3309', 'K1035'가 있을 때, 속도가 빠른 순서로 옳은 것은?",o:["G > D > K","K > D > G","D > G > K","G > K > D"],a:0,e:"G(高铁) 최고속 → D(动车) → K(快速, 일반열차)."},
+{lv:"심화",ty:"mc",un:"교통",cc:"좌석 종류",q:"침대표를 끊을 때 '软卧'와 '硬卧'의 차이를 바르게 설명한 것은?",o:["둘 다 침대칸이며, 软卧가 더 부드럽고 硬卧가 더 딱딱하다","软卧는 좌석, 硬卧는 침대다","软卧가 더 딱딱하다","둘 다 입석이다"],a:0,e:"卧=침대. 软(부드러움) vs 硬(딱딱함)의 차이."},
+{lv:"심화",ty:"mc",un:"언어",cc:"한자 구조",q:"새 한자 '休(쉴 휴: 人+木, 사람이 나무에 기댐)'를 학습한 4가지 구조로 분류하면?",o:["회의(会意)","상형","지사","형성"],a:0,e:"두 글자(人+木)를 의미로 합쳐 새 뜻을 만든 회의(会意)."},
+{lv:"심화",ty:"mc",un:"화폐",cc:"명소 종합",q:"인민폐 도안이 자연(西湖·桂林)·역사·민족(泰山·布达拉宫)·정치(人民大会堂)를 고루 담은 이유로 가장 적절한 것은?",o:["자연·역사·민족·정치를 안배해 통합된 국가 이미지를 구성하기 위해","관광 수익만을 위해","특정 지역만 강조하기 위해","우연한 선정"],a:0,e:"여러 영역을 안배해 통합된 국가 정체성을 시각화한 의도."},
+{lv:"심화",ty:"analysis",un:"음식",cc:"단원 종합",p:"<보기>\nㄱ. 화폐:布达拉宫=다민족 / 음식:川菜=麻辣 / 언어:甲骨文=가장 오래된 문자\nㄴ. 화폐:泰山=서호 / 음식:鲁菜=마파두부 / 언어:상형=明\nㄷ. 화폐:桂林=정치권위 / 음식:粤菜=해산물·북방 / 언어:형성=日",q:"단원-개념 연결이 '모두' 옳은 것은?",o:["ㄱ","ㄴ","ㄷ","모두 틀림"],a:0,e:"ㄱ만 모두 옳음. (泰山≠서호, 마파두부=川菜, 明=회의, 桂林=대자연, 粤菜=광동/담백, 日=상형)"}
+];
+
+/* ============================ 유틸 ============================ */
+function $(sel,el){return (el||document).querySelector(sel)}
+function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function passageHTML(p){return esc(p).replace(/&lt;보기&gt;/g,"<b>&lt;보기&gt;</b>")}
+function norm(s){
+  if(s==null)return"";
+  let t=String(s).trim().toLowerCase();
+  const map={"ā":"a","á":"a","ǎ":"a","à":"a","ē":"e","é":"e","ě":"e","è":"e",
+    "ī":"i","í":"i","ǐ":"i","ì":"i","ō":"o","ó":"o","ǒ":"o","ò":"o",
+    "ū":"u","ú":"u","ǔ":"u","ù":"u","ǖ":"u","ǘ":"u","ǚ":"u","ǜ":"u","ü":"u"};
+  t=t.replace(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]/g,c=>map[c]||c);
+  t=t.replace(/[\s.,!?·、，。！？\/'"()]/g,"");
+  return t;
+}
+function getByLevel(lv){return QUESTIONS.filter(q=>q.lv===lv)}
+function safeKey(name){return "result:"+String(name).replace(/[\s'"\/\\]/g,"_")}
+
+/* ============================ 상태 ============================ */
+const S={name:"",isTeacher:false,startIdx:0,endIdx:5,
+  curLvIdx:0,curQIdx:0,levelQs:[],
+  results:[], // {lv,un,ty,cc,q,correct,user,correctAns,e}
+  timer:null,timeLeft:30};
+
+const root=$("#app");
+function clearTimer(){if(S.timer){clearInterval(S.timer);S.timer=null}}
+
+/* ============================ 1. 랜딩 ============================ */
+function renderLanding(){
+  clearTimer();
+  root.innerHTML="";
+  const c=el("div","card center");
+  c.innerHTML=`
+    <div class="tab">2026 1학기 · 전공기초중국어</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 4px">
+      <div class="stamp">文</div>
+      <div style="text-align:left">
+        <div class="title-hero">문화 기말 정리하기<span class="ck">&laquo;</span></div>
+        <div class="muted small" style="margin-top:2px">음식 · 화폐 · 언어 · 교통 · 보충단어</div>
+      </div>
+    </div>`;
+  const f1=el("div","field");
+  f1.innerHTML=`<label for="nm">이름</label>`;
+  const nm=el("input");nm.type="text";nm.id="nm";nm.placeholder="이름을 입력하세요";nm.autocomplete="off";
+  f1.appendChild(nm);
+  const f2=el("div","field");
+  f2.innerHTML=`<label for="tn">교사 번호 <span class="muted small">(학생은 비워두세요)</span></label>`;
+  const tn=el("input");tn.type="password";tn.id="tn";tn.placeholder="교사 전용";tn.autocomplete="off";tn.inputMode="numeric";
+  f2.appendChild(tn);
+  const errd=el("div","err");
+  const btn=el("button","btn","시작하기");
+  const go=()=>{
+    const name=nm.value.trim(), teacher=tn.value.trim();
+    if(!name){errd.textContent="이름을 입력해 주세요.";nm.focus();return}
+    if(teacher){ // 교사번호 입력됨
+      if(name==="문문쌤" && teacher==="0825"){renderTeacher();return}
+      errd.textContent="교사 번호 또는 이름이 올바르지 않습니다.";return;
+    }
+    S.name=name;S.isTeacher=false;renderStartSelect();
+  };
+  btn.addEventListener("click",go);
+  [nm,tn].forEach(inp=>inp.addEventListener("keydown",e=>{if(e.key==="Enter")go()}));
+  c.appendChild(f1);c.appendChild(f2);c.appendChild(errd);c.appendChild(btn);
+  c.appendChild(el("div","hint",`단계를 골라 풀고, 단계마다 해설을 확인할 수 있어요. <span class="kbd">Enter</span>로도 진행됩니다.`));
+  root.appendChild(c);
+  setTimeout(()=>nm.focus(),60);
+}
+
+/* ============================ 2. 시작 단계 ============================ */
+function renderStartSelect(){
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<button class="back" id="bk">← 처음으로</button>
+    <h2>${esc(S.name)}님, 어느 단계부터 시작하시겠어요?</h2>
+    <p class="muted small">난이도: 기초 → 하 → 중 → 상 → 최상 → 심화</p>`;
+  const grid=el("div","lvl-grid");
+  LEVELS.forEach((lv,i)=>{
+    const b=el("button","lvl-btn"+(i===S.startIdx?" sel":""),`${lv}<span class="sub">${LEVEL_SUB[lv]}</span>`);
+    b.addEventListener("click",()=>{S.startIdx=i;if(S.endIdx<i)S.endIdx=i;renderStartSelect()});
+    grid.appendChild(b);
+  });
+  c.appendChild(grid);
+  const next=el("button","btn","다음");
+  next.style.marginTop="18px";
+  next.addEventListener("click",renderEndSelect);
+  c.appendChild(next);
+  root.appendChild(c);
+  $("#bk").addEventListener("click",renderLanding);
+}
+
+/* ============================ 3. 종료 단계 ============================ */
+function renderEndSelect(){
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<button class="back" id="bk">← 시작 단계 다시</button>
+    <h2>어느 단계에서 마치시겠어요?</h2>
+    <p class="muted small">시작 단계(<b>${LEVELS[S.startIdx]}</b>) 이상만 선택할 수 있어요.</p>`;
+  const grid=el("div","lvl-grid");
+  LEVELS.forEach((lv,i)=>{
+    const dis=i<S.startIdx;
+    const b=el("button","lvl-btn"+(i===S.endIdx?" sel":""),`${lv}<span class="sub">${LEVEL_SUB[lv]}</span>`);
+    if(dis)b.disabled=true;
+    else b.addEventListener("click",()=>{S.endIdx=i;renderEndSelect()});
+    grid.appendChild(b);
+  });
+  c.appendChild(grid);
+  const cnt=(S.endIdx-S.startIdx+1)*15;
+  c.appendChild(el("div","hint",`선택 범위: <b>${LEVELS[S.startIdx]} ~ ${LEVELS[S.endIdx]}</b> · 총 <b>${cnt}문제</b>`));
+  const next=el("button","btn","다음");
+  next.style.marginTop="14px";
+  next.addEventListener("click",renderReady);
+  c.appendChild(next);
+  root.appendChild(c);
+  $("#bk").addEventListener("click",renderStartSelect);
+}
+
+/* ============================ 4. 준비 ============================ */
+function renderReady(){
+  root.innerHTML="";
+  const c=el("div","card center");
+  c.innerHTML=`
+    <div style="font-size:46px;margin-bottom:4px">🍀</div>
+    <h1 style="font-size:26px">${esc(S.name)}님, 마지막까지 힘 내세요!</h1>
+    <p style="font-size:18px;font-weight:800;color:#c79a00;margin:6px 0 2px">당신의 1등급을 빕니다. ⭐️</p>
+    <p class="muted small">범위: ${LEVELS[S.startIdx]} ~ ${LEVELS[S.endIdx]} · 문항당 제한시간 30초</p>`;
+  const btn=el("button","btn","start");
+  btn.style.marginTop="18px";
+  btn.addEventListener("click",startQuiz);
+  c.appendChild(btn);
+  const bk=el("button","back","← 단계 다시 선택");
+  bk.style.display="block";bk.style.margin="14px auto 0";
+  bk.addEventListener("click",renderEndSelect);
+  c.appendChild(bk);
+  root.appendChild(c);
+}
+
+/* ============================ 5. 퀴즈 ============================ */
+function startQuiz(){
+  S.curLvIdx=S.startIdx;
+  S.results=[];
+  beginLevel();
+}
+function beginLevel(){
+  S.levelQs=getByLevel(LEVELS[S.curLvIdx]);
+  S.curQIdx=0;
+  S.selected=null;
+  renderQuestion();
+}
+function renderQuestion(){
+  clearTimer();
+  S.selected=null;
+  const lv=LEVELS[S.curLvIdx];
+  const q=S.levelQs[S.curQIdx];
+  const totalLevels=S.endIdx-S.startIdx+1;
+  const lvPos=S.curLvIdx-S.startIdx+1;
+  root.innerHTML="";
+  const c=el("div","card");
+  const top=el("div","progress-top");
+  top.innerHTML=`<span class="pill u">${lv} 단계 · ${lvPos}/${totalLevels}</span>
+    <span class="pill">문제 ${S.curQIdx+1} / ${S.levelQs.length}</span>`;
+  c.appendChild(top);
+  const tb=el("div","timerbar");tb.id="tbar";tb.innerHTML=`<i style="width:100%"></i>`;
+  c.appendChild(tb);
+
+  c.appendChild(el("div","qno",`Q${S.curQIdx+1} · ${TYPE_LABEL[q.ty]}`));
+  c.appendChild(el("div","qtext",esc(q.q)));
+  if(q.p){const ps=el("div","passage");ps.innerHTML=passageHTML(q.p);c.appendChild(ps)}
+
+  const submitBtn=el("button","btn","제출하고 다음");
+  submitBtn.style.marginTop="18px";submitBtn.disabled=true;
+
+  if(q.ty==="short"){
+    const wrap=el("div","short-in");
+    const inp=el("input");inp.type="text";inp.placeholder="정답 입력 후 Enter";inp.autocomplete="off";inp.id="sa";
+    inp.addEventListener("input",()=>{submitBtn.disabled=inp.value.trim()===""});
+    inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&inp.value.trim()!==""){submit()}});
+    wrap.appendChild(inp);c.appendChild(wrap);
+    setTimeout(()=>inp.focus(),50);
+    submitBtn.addEventListener("click",submit);
+    function submit(){lockSubmit(($("#sa").value||""))}
+  }else{
+    const opts=el("div","opts");
+    q.o.forEach((o,i)=>{
+      const b=el("button","opt",`<span class="k">${"①②③④⑤"[i]||i+1}</span><span>${esc(o)}</span>`);
+      b.addEventListener("click",()=>{
+        S.selected=i;
+        Array.from(opts.children).forEach(x=>x.classList.remove("sel"));
+        b.classList.add("sel");
+        submitBtn.disabled=false;
+      });
+      opts.appendChild(b);
+    });
+    c.appendChild(opts);
+    submitBtn.addEventListener("click",()=>{if(S.selected!=null)lockSubmit(S.selected)});
+  }
+  c.appendChild(submitBtn);
+  root.appendChild(c);
+  startTimer();
+}
+function startTimer(){
+  S.timeLeft=30;
+  const bar=$("#tbar");const fill=bar?bar.querySelector("i"):null;
+  if(fill)fill.style.width="100%";
+  S.timer=setInterval(()=>{
+    S.timeLeft--;
+    const pct=Math.max(0,S.timeLeft/30*100);
+    if(fill)fill.style.width=pct+"%";
+    if(bar){if(S.timeLeft<=10)bar.classList.add("warn");else bar.classList.remove("warn")}
+    if(S.timeLeft<=0){clearTimer();timeoutSubmit()}
+  },1000);
+}
+function timeoutSubmit(){
+  const q=S.levelQs[S.curQIdx];
+  if(q.ty==="short"){lockSubmit(($("#sa")&&$("#sa").value)||"",true)}
+  else{lockSubmit(S.selected,true)}
+}
+function lockSubmit(user,timedOut){
+  clearTimer();
+  const q=S.levelQs[S.curQIdx];
+  let correct=false,userText="",correctText="";
+  if(q.ty==="short"){
+    userText=(user||"").trim()|| (timedOut?"(시간 초과)":"(미입력)");
+    correct=q.a.some(ac=>norm(ac)===norm(user));
+    correctText=q.a[0];
+  }else{
+    if(user==null){userText=timedOut?"(시간 초과)":"(미선택)";correct=false;}
+    else{userText=q.o[user];correct=(user===q.a);}
+    correctText=q.o[q.a];
+  }
+  S.results.push({lv:q.lv,un:q.un,ty:q.ty,cc:q.cc,q:q.q,p:q.p||"",o:q.o||null,
+    correct,user:userText,correctAns:correctText,e:q.e});
+  // 다음 문제
+  if(S.curQIdx < S.levelQs.length-1){S.curQIdx++;renderQuestion();}
+  else{renderLevelResult();}
+}
+
+/* ============================ 6. 단계 결과 ============================ */
+function renderLevelResult(){
+  clearTimer();
+  const lv=LEVELS[S.curLvIdx];
+  const lvRes=S.results.filter(r=>r.lv===lv);
+  const correct=lvRes.filter(r=>r.correct).length;
+  const total=lvRes.length;
+  const pct=Math.round(correct/total*100);
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<div class="tab">${lv} 단계 결과</div>`;
+  const head=el("div","res-head");
+  head.innerHTML=`
+    <div class="donut" style="--p:${pct}"><span>${pct}%</span></div>
+    <div><div class="score-big">${correct}<span style="font-size:20px;color:var(--sub)"> / ${total}</span></div>
+    <div class="muted small">${lv} 단계 · ${TYPE_LABEL.mc}/${TYPE_LABEL.short}/${TYPE_LABEL.analysis} 혼합</div></div>`;
+  c.appendChild(head);
+
+  const wrongs=lvRes.filter(r=>!r.correct);
+  if(wrongs.length===0){
+    const ok=el("div","weak");ok.style.background="#f4fbf6";ok.style.borderColor="#cfe9d6";
+    ok.innerHTML=`<h4 style="color:var(--green)">🎉 전부 정답이에요!</h4><div class="small muted">이 단계 개념은 충분히 이해했어요. 다음 단계로 가볼까요?</div>`;
+    c.appendChild(ok);
+  }else{
+    c.appendChild(el("h3",null,`틀린 문제 해설 · 개념 보충 <span class="muted small">(${wrongs.length}문제)</span>`));
+    lvRes.forEach((r,i)=>{
+      if(r.correct)return;
+      const box=el("div","qreview wrong");
+      const tags=`<div class="tagrow"><span class="tag lv">난이도 ${r.lv}</span><span class="tag un">${r.un}</span><span class="tag ty">${TYPE_LABEL[r.ty]}</span><span class="tag">${r.cc}</span></div>`;
+      let ph=r.p?`<div class="passage">${passageHTML(r.p)}</div>`:"";
+      box.innerHTML=`${tags}<div style="font-weight:800;margin-bottom:4px">Q${i+1}. ${esc(r.q)}</div>${ph}
+        <div class="ans-line"><span class="x">내 답:</span> ${esc(r.user)}</div>
+        <div class="ans-line"><span class="o">정답:</span> ${esc(r.correctAns)}</div>
+        <div class="explain">💡 ${esc(r.e)}</div>`;
+      c.appendChild(box);
+    });
+  }
+
+  const isLast=(S.curLvIdx>=S.endIdx);
+  const btn=el("button","btn",isLast?"전체 리포트 보기":`다음 단계 (${LEVELS[S.curLvIdx+1]}) ▶`);
+  btn.style.marginTop="18px";
+  btn.addEventListener("click",()=>{
+    if(isLast){renderFinalReport();}
+    else{S.curLvIdx++;beginLevel();}
+  });
+  c.appendChild(btn);
+  root.appendChild(c);
+  window.scrollTo(0,0);
+}
+
+/* ============================ 통계 계산 ============================ */
+function computeStats(items){
+  const total=items.length, correct=items.filter(r=>r.correct).length;
+  const byLevel={},byType={},byUnit={},byConcept={};
+  items.forEach(r=>{
+    (byLevel[r.lv]=byLevel[r.lv]||{c:0,t:0}).t++; if(r.correct)byLevel[r.lv].c++;
+    (byType[r.ty]=byType[r.ty]||{c:0,t:0}).t++; if(r.correct)byType[r.ty].c++;
+    (byUnit[r.un]=byUnit[r.un]||{c:0,t:0}).t++; if(r.correct)byUnit[r.un].c++;
+    (byConcept[r.cc]=byConcept[r.cc]||{c:0,t:0}).t++; if(r.correct)byConcept[r.cc].c++;
+  });
+  // 취약 단원/개념 (오답률 높은 순, 오답 1개 이상)
+  const weakUnits=Object.entries(byUnit).map(([k,v])=>({k,err:(v.t-v.c)/v.t,wrong:v.t-v.c}))
+    .filter(x=>x.wrong>0).sort((a,b)=>b.err-a.err||b.wrong-a.wrong);
+  const weakConcepts=Object.entries(byConcept).map(([k,v])=>({k,wrong:v.t-v.c,t:v.t}))
+    .filter(x=>x.wrong>0).sort((a,b)=>b.wrong-a.wrong);
+  return {total,correct,byLevel,byType,byUnit,byConcept,weakUnits,weakConcepts};
+}
+function barRow(label,c,t,redIfBad){
+  const errPct=t?Math.round((t-c)/t*100):0;
+  const okPct=t?Math.round(c/t*100):0;
+  const bad=redIfBad&&errPct>=50;
+  return `<div class="bar"><span class="lab">${esc(label)}</span>
+    <span class="track"><i class="${bad?'r':''}" style="width:${okPct}%"></i></span>
+    <span class="val">${c}/${t} (${okPct}%)</span></div>`;
+}
+
+/* ============================ 7. 최종 리포트 ============================ */
+function reportInnerHTML(items,name){
+  const st=computeStats(items);
+  const accPct=Math.round(st.correct/st.total*100);
+  const errPct=100-accPct;
+  let h=`<div class="res-head">
+    <div class="donut" style="--p:${accPct}"><span>${accPct}%</span></div>
+    <div><div class="score-big">${st.correct}<span style="font-size:20px;color:var(--sub)"> / ${st.total}</span></div>
+    <div class="muted small">전체 정답률 ${accPct}% · 오답률 ${errPct}%</div></div></div>`;
+
+  h+=`<div class="divider"></div><h3>난이도(단계)별 정답률</h3>`;
+  LEVELS.forEach(lv=>{if(st.byLevel[lv])h+=barRow(lv,st.byLevel[lv].c,st.byLevel[lv].t,true)});
+
+  h+=`<div class="divider"></div><h3>유형별 정답률</h3>`;
+  ["mc","short","analysis"].forEach(ty=>{if(st.byType[ty])h+=barRow(TYPE_LABEL[ty],st.byType[ty].c,st.byType[ty].t,true)});
+
+  h+=`<div class="divider"></div><h3>단원별 정답률</h3>`;
+  Object.keys(st.byUnit).forEach(un=>{h+=barRow(un,st.byUnit[un].c,st.byUnit[un].t,true)});
+
+  // 취약 단원/개념
+  h+=`<div class="weak"><h4>📌 취약 단원</h4>`;
+  if(st.weakUnits.length===0)h+=`<div class="small">취약 단원 없음 — 단원별로 고르게 잘했어요!</div>`;
+  else{h+=`<div class="chips">`+st.weakUnits.map(u=>`<span class="chip">${esc(u.k)} · 오답 ${u.wrong}개</span>`).join("")+`</div>`;}
+  h+=`</div>`;
+
+  h+=`<div class="weak"><h4>📌 취약 개념 (집중 복습)</h4>`;
+  if(st.weakConcepts.length===0)h+=`<div class="small">취약 개념 없음 — 훌륭해요!</div>`;
+  else{h+=`<div class="chips">`+st.weakConcepts.slice(0,12).map(cc=>`<span class="chip">${esc(cc.k)} · ${cc.wrong}개</span>`).join("")+`</div>`;}
+  h+=`</div>`;
+  return h;
+}
+function renderFinalReport(){
+  clearTimer();
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<div class="tab">전체 리포트</div><h2>${esc(S.name)}님의 학습 리포트</h2>
+    <p class="muted small">범위: ${LEVELS[S.startIdx]} ~ ${LEVELS[S.endIdx]} · 총 ${S.results.length}문제</p>`;
+  const body=el("div");body.innerHTML=reportInnerHTML(S.results,S.name);
+  c.appendChild(body);
+
+  // 오답 한눈에 보기
+  const wrongs=S.results.filter(r=>!r.correct);
+  if(wrongs.length){
+    c.appendChild(el("div","divider"));
+    c.appendChild(el("h3",null,`전체 오답 다시보기 <span class="muted small">(${wrongs.length}문제)</span>`));
+    wrongs.forEach((r,i)=>{
+      const box=el("div","qreview wrong");
+      const tags=`<div class="tagrow"><span class="tag lv">${r.lv}</span><span class="tag un">${r.un}</span><span class="tag ty">${TYPE_LABEL[r.ty]}</span><span class="tag">${r.cc}</span></div>`;
+      let ph=r.p?`<div class="passage">${passageHTML(r.p)}</div>`:"";
+      box.innerHTML=`${tags}<div style="font-weight:800;margin-bottom:4px">${esc(r.q)}</div>${ph}
+        <div class="ans-line"><span class="x">내 답:</span> ${esc(r.user)} &nbsp; <span class="o">정답:</span> ${esc(r.correctAns)}</div>
+        <div class="explain">💡 ${esc(r.e)}</div>`;
+      c.appendChild(box);
+    });
+  }
+
+  const save=el("div","hint","결과를 저장하는 중...");save.id="savestat";
+  c.appendChild(save);
+  const again=el("button","btn ghost","처음으로");
+  again.style.marginTop="16px";
+  again.addEventListener("click",renderLanding);
+  c.appendChild(again);
+  root.appendChild(c);
+  window.scrollTo(0,0);
+  saveResult();
+}
+async function saveResult(){
+  const stat=$("#savestat");
+  const st=computeStats(S.results);
+  const record={
+    name:S.name, ts:Date.now(),
+    range:LEVELS[S.startIdx]+"~"+LEVELS[S.endIdx],
+    correct:st.correct, total:st.total,
+    pct:Math.round(st.correct/st.total*100),
+    items:S.results.map(r=>({lv:r.lv,un:r.un,ty:r.ty,cc:r.cc,q:r.q,p:r.p,correct:r.correct,user:r.user,correctAns:r.correctAns,e:r.e}))
+  };
+  try{
+    if(window.storage&&window.storage.set){
+      await window.storage.set(safeKey(S.name), JSON.stringify(record), true);
+      if(stat)stat.innerHTML="✅ 결과가 저장되었습니다. (선생님이 확인할 수 있어요)";
+    }else{ if(stat)stat.textContent="결과 저장 기능을 사용할 수 없는 환경입니다."; }
+  }catch(e){ if(stat)stat.textContent="결과 저장 중 문제가 발생했습니다."; }
+}
+
+/* ============================ 8. 교사 대시보드 ============================ */
+async function loadAllRecords(){
+  const out=[];
+  if(!(window.storage&&window.storage.list))return out;
+  let keys=[];
+  try{const r=await window.storage.list("result:",true);keys=(r&&r.keys)||[];}catch(e){return out}
+  for(const k of keys){
+    try{const g=await window.storage.get(k,true);if(g&&g.value){const rec=JSON.parse(g.value);if(rec&&rec.items)out.push(rec);}}catch(e){}
+  }
+  return out;
+}
+async function renderTeacher(){
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<button class="back" id="bk">← 로그아웃</button>
+    <div class="tab">교사 모드 <span class="badge">문문쌤</span></div>
+    <h2>학생 학습 현황</h2>
+    <div class="hint" id="ld">데이터를 불러오는 중...</div>`;
+  root.appendChild(c);
+  $("#bk").addEventListener("click",renderLanding);
+
+  const records=await loadAllRecords();
+  const ld=$("#ld");
+  if(records.length===0){ld.innerHTML="아직 제출된 학생 결과가 없습니다.";return}
+  ld.remove();
+
+  // 모든 문항 집계 → 오답률 높은 문제
+  const qmap={};
+  records.forEach(rec=>rec.items.forEach(it=>{
+    const key=it.q;
+    const m=qmap[key]||(qmap[key]={q:it.q,un:it.un,lv:it.lv,cc:it.cc,e:it.e,t:0,wrong:0});
+    m.t++; if(!it.correct)m.wrong++;
+  }));
+  const hardest=Object.values(qmap).map(m=>({...m,err:m.wrong/m.t}))
+    .filter(m=>m.wrong>0).sort((a,b)=>b.err-a.err||b.wrong-a.wrong).slice(0,8);
+
+  // 학생 점수 정렬 (최고 → 최하)
+  const students=records.slice().sort((a,b)=>b.pct-a.pct||b.correct-a.correct);
+
+  // 취약 개념 전체
+  const ccmap={};
+  records.forEach(rec=>rec.items.forEach(it=>{const m=ccmap[it.cc]||(ccmap[it.cc]={t:0,w:0});m.t++;if(!it.correct)m.w++;}));
+  const weakCC=Object.entries(ccmap).map(([k,v])=>({k,w:v.w,t:v.t})).filter(x=>x.w>0).sort((a,b)=>b.w-a.w).slice(0,12);
+
+  // --- 렌더 ---
+  c.appendChild(el("div","hint",`제출 학생 <b>${records.length}명</b> · 집계 문항 ${Object.keys(qmap).length}개`));
+
+  c.appendChild(el("div","divider"));
+  c.appendChild(el("h3",null,"📉 오답률이 가장 높은 문제 TOP"));
+  hardest.forEach((m,i)=>{
+    const box=el("div","qreview");
+    box.style.borderColor="#f0d6a8";box.style.background="#fff9ec";
+    box.innerHTML=`<div class="tagrow"><span class="tag lv">${m.lv}</span><span class="tag un">${m.un}</span><span class="tag">${m.cc}</span>
+      <span class="tag" style="background:#fae2e1;color:#b5403c">오답률 ${Math.round(m.err*100)}% (${m.wrong}/${m.t})</span></div>
+      <div style="font-weight:800;margin-bottom:4px">${esc(m.q)}</div>
+      <div class="explain">💡 ${esc(m.e)}</div>`;
+    c.appendChild(box);
+  });
+
+  c.appendChild(el("div","weak",`<h4>📌 학생 전체가 취약한 개념</h4><div class="chips">${
+    weakCC.map(x=>`<span class="chip">${esc(x.k)} · ${x.w}회 오답</span>`).join("")||'없음'}</div>`));
+
+  c.appendChild(el("div","divider"));
+  c.appendChild(el("h3",null,"🏅 학생별 점수 (최고점 → 최하점)"));
+  c.appendChild(el("div","hint","이름을 누르면 개별 리포트와 분석을 볼 수 있어요."));
+  const list=el("div");
+  students.forEach((rec,i)=>{
+    const row=el("div","stu-row");
+    row.innerHTML=`<span class="rank">${i+1}</span>
+      <span class="nm">${esc(rec.name)} <span class="muted small" style="font-weight:600">· ${esc(rec.range)}</span></span>
+      <span class="sc">${rec.pct}% <span class="muted small" style="font-weight:600">(${rec.correct}/${rec.total})</span></span>`;
+    row.addEventListener("click",()=>renderTeacherStudent(rec,records));
+    list.appendChild(row);
+  });
+  c.appendChild(list);
+  window.scrollTo(0,0);
+}
+function renderTeacherStudent(rec,allRecords){
+  root.innerHTML="";
+  const c=el("div","card");
+  c.innerHTML=`<button class="back" id="bk">← 학생 목록</button>
+    <div class="tab">개별 리포트 <span class="badge">${esc(rec.name)}</span></div>
+    <h2>${esc(rec.name)}님 분석</h2>
+    <p class="muted small">범위 ${esc(rec.range)} · 제출 ${new Date(rec.ts).toLocaleString("ko-KR")}</p>`;
+  const body=el("div");body.innerHTML=reportInnerHTML(rec.items,rec.name);
+  c.appendChild(body);
+
+  const wrongs=rec.items.filter(r=>!r.correct);
+  if(wrongs.length){
+    c.appendChild(el("div","divider"));
+    c.appendChild(el("h3",null,`${esc(rec.name)}님이 틀린 문제 (${wrongs.length})`));
+    wrongs.forEach(r=>{
+      const box=el("div","qreview wrong");
+      let ph=r.p?`<div class="passage">${passageHTML(r.p)}</div>`:"";
+      box.innerHTML=`<div class="tagrow"><span class="tag lv">${r.lv}</span><span class="tag un">${r.un}</span><span class="tag">${r.cc}</span></div>
+        <div style="font-weight:800;margin-bottom:4px">${esc(r.q)}</div>${ph}
+        <div class="ans-line"><span class="x">학생 답:</span> ${esc(r.user)} &nbsp; <span class="o">정답:</span> ${esc(r.correctAns)}</div>
+        <div class="explain">💡 ${esc(r.e)}</div>`;
+      c.appendChild(box);
+    });
+  }
+  root.appendChild(c);
+  $("#bk").addEventListener("click",renderTeacher);
+  window.scrollTo(0,0);
+}
+
+/* ============================ 시작 ============================ */
+renderLanding();
+</script>
+</body>
+</html>
